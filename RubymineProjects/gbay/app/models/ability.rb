@@ -9,6 +9,9 @@ class Ability
     can :update, Item do |item|
       item.try(:user) == user
     end
+    can :destroy, Item do |item|
+      item.try(:user) == user
+    end
     if user.user_role? "admin"
       can :manage, :all
     end

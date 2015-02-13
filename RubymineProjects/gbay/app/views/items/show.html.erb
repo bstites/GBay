@@ -6,12 +6,12 @@
 </p>
 
 <p>
-  <strong>Price:</strong>
-  <%= @item.Price %>
+  <strong>Price: $</strong>
+  <%=@item.Price %>
 </p>
 <p>
   <strong>User:</strong>
-  <%=@item.user_id %>
+  <%=User.find(@item.user_id).email %>
 </p>
 <%if can? :update, @item%>
     <%= link_to 'Edit', edit_item_path(@item) %>
@@ -20,3 +20,26 @@
     <%= link_to 'Destroy', @item, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%end%>
 <%= link_to 'Back', items_path %>
+
+<br>
+<br>
+<table>
+  <thead>
+  <tr>
+    <th>Author</th>
+    <th>Comment</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @item.comments.each do |comment| %>
+      <tr>
+        <td><%= User.find(comment.user_id).email %></td>
+        <td><%= comment.content %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

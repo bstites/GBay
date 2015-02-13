@@ -12,13 +12,6 @@ class ItemsController < ApplicationController
     respond_with(@item)
   end
 
-  def new
-  end
-
-  def edit
-    unauthorized! if cannot? :manage, @item
-  end
-
   def create
     @item.user_id = current_user.id
     @item.save
@@ -26,6 +19,7 @@ class ItemsController < ApplicationController
   end
 
   def update
+    @item.update!(item_params)
     respond_with(@item)
   end
 
