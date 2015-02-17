@@ -20,7 +20,7 @@ require 'rails_helper'
 
 RSpec.describe ItemsController, :type => :controller do
 
-  # This should return the minimal set of attributes required to create a valid
+  # This should return the minimal set of attributes required to new a valid
   # Item. As you add validations to Item, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
@@ -67,34 +67,34 @@ RSpec.describe ItemsController, :type => :controller do
     end
   end
 
-  describe "POST create" do
+  describe "POST new" do
     describe "with valid params" do
       it "creates a new Item" do
         expect {
-          post :create, {:item => valid_attributes}, valid_session
+          post :new, {:item => valid_attributes}, valid_session
         }.to change(Item, :count).by(1)
       end
 
       it "assigns a newly created item as @item" do
-        post :create, {:item => valid_attributes}, valid_session
+        post :new, {:item => valid_attributes}, valid_session
         expect(assigns(:item)).to be_a(Item)
         expect(assigns(:item)).to be_persisted
       end
 
       it "redirects to the created item" do
-        post :create, {:item => valid_attributes}, valid_session
+        post :new, {:item => valid_attributes}, valid_session
         expect(response).to redirect_to(Item.last)
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved item as @item" do
-        post :create, {:item => invalid_attributes}, valid_session
+        post :new, {:item => invalid_attributes}, valid_session
         expect(assigns(:item)).to be_a_new(Item)
       end
 
       it "re-renders the 'new' template" do
-        post :create, {:item => invalid_attributes}, valid_session
+        post :new, {:item => invalid_attributes}, valid_session
         expect(response).to render_template("new")
       end
     end

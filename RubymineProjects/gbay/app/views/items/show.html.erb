@@ -13,6 +13,9 @@
   <strong>User:</strong>
   <%=User.find(@item.user_id).email %>
 </p>
+<%if can? :read, @item%>
+    <%= link_to 'Comment', new_comment_path %>
+<%end%>
 <%if can? :update, @item%>
     <%= link_to 'Edit', edit_item_path(@item) %>
 <%end%>

@@ -5,7 +5,7 @@ class Ability
     user ||= User.new
 
     can :read, :all
-    can :create, Item
+    can :new, Item
     can :update, Item do |item|
       item.try(:user) == user
     end

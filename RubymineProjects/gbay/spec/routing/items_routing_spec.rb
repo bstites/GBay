@@ -19,7 +19,7 @@ RSpec.describe ItemsController, :type => :routing do
       expect(:get => "/items/1/edit").to route_to("items#edit", :id => "1")
     end
 
-    it "routes to #create" do
+    it "routes to #new" do
       expect(:post => "/items").to route_to("items#create")
     end
 
