@@ -11,7 +11,7 @@
 </p>
 <p>
   <strong>User:</strong>
-  <%=User.find(@item.user_id).email %>
+  <%=@item.user.email %>
 </p>
 <%if can? :read, @item%>
     <%= link_to 'Comment', new_comment_path %>
